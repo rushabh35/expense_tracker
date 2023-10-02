@@ -1,42 +1,56 @@
-import 'package:expense_tracker/constants/app_constants_colors.dart';
 import 'package:flutter/material.dart';
 
-class LoginTextFieldWidget extends StatelessWidget {
+import '../constants/app_constants_colors.dart';
+
+class PasswordTextField extends StatefulWidget {
   final TextEditingController controller;
   final String hintText;
   final String? errorText;
-  final bool obscureText;
-  final InputDecoration decoration;
-  final TextInputType keyboardType;
+   final InputDecoration decoration;
 
-  LoginTextFieldWidget({
+   const PasswordTextField({super.key,
     required this.controller,
-    required this.hintText,
-     this.errorText = "",
-    this.obscureText = false,
+     required this.hintText,
+      this.errorText = "",
     this.decoration = const InputDecoration(),
-    this.keyboardType = TextInputType.text,
   });
 
+
+  @override
+  _PasswordTextFieldState createState() => _PasswordTextFieldState();
+}
+
+class _PasswordTextFieldState extends State<PasswordTextField> {
+  bool obscureText = true;
+
+  void _changeObscure() {
+    setState(() {
+      obscureText = !obscureText;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Material(
       color: AppConstantsColors.transparent,
       child: TextField(
-        keyboardType: keyboardType,
-        controller: controller,
+        controller: widget.controller,
         obscureText: obscureText,
         style: const TextStyle(
-          color: AppConstantsColors.grey
+            color: AppConstantsColors.grey
         ),
         decoration: InputDecoration(
-          labelText: hintText,
-          errorText: errorText,
+          labelText: widget.hintText,
           labelStyle: const TextStyle(
-            color: AppConstantsColors.brightWhiteColor
-            ,
+            color: AppConstantsColors.brightWhiteColor,
           ),
-          hintText: hintText,
+          suffixIcon: IconButton(
+            icon: Icon(
+              obscureText ? Icons.visibility : Icons.visibility_off ,
+              color: AppConstantsColors.whiteColor,
+            ), onPressed: _changeObscure,
+          ),
+          errorText:  widget.errorText,
+          hintText: widget.hintText,
           hintStyle: const TextStyle(
             color: AppConstantsColors.brightWhiteColor,
           ),
