@@ -5,7 +5,7 @@ class CustomButton extends StatelessWidget {
   late Function onPressed;
   late double width;
   late double height;
-  CustomButton({super.key, required this.text, required this.onPressed, required this.width, required this.height});
+  CustomButton({super.key, required this.text, required this.onPressed,  this.width = 500,  this.height = 50});
 
   @override
   Widget build(BuildContext context) {

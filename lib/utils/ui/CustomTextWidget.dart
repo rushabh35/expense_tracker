@@ -5,7 +5,7 @@ class CustomTextWidget extends StatelessWidget {
   final Color textColor;
   final double fontSize;
 
-  CustomTextWidget({
+  const CustomTextWidget({super.key,
     required this.text,
     this.textColor = Colors.black, // Default text color is black
     this.fontSize = 16.0, // Default font size is 16.0

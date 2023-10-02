@@ -1,7 +1,9 @@
 import 'package:expense_tracker/constants/app_constants_colors.dart';
+import 'package:expense_tracker/modules/dashboard/screens/authenticate/signup_page.dart';
+import 'package:expense_tracker/utils/ui/ClickableText.dart';
 import 'package:flutter/material.dart';
 import '../../../../utils/ui/CustomButton.dart';
-import '../../../../utils/ui/CustomRichText.dart';
+import '../../../../utils/ui/CustomTextWidget.dart';
 import 'login_page.dart';
 
 class LandingPage extends StatefulWidget {
@@ -31,25 +33,33 @@ class _LandingPageState extends State<LandingPage> {
                 height: sizeHeight * 0.06,
                 text: 'GET STARTED',
                 onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => const LoginPage()));
+                  try {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SignUpPage()));
+                  } catch (e) {
+                    print("Navigation error: $e");
+                  }
                 },
               ),
               SizedBox(
                 height: sizeHeight * 0.05,
               ),
-              Row(
+               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CustomTextWidget(
+                  const CustomTextWidget(
                       text : 'Already have an account? ',
-                      textColor : AppConstantsColors.textWhiteColor,
+                      textColor : AppConstantsColors.brightWhiteColor,
                       fontSize : 14
                   ),
-                  CustomTextWidget(
+                  ClickableText(
                       text : 'Log In',
                       textColor : AppConstantsColors.raisedButtonColor,
-                      fontSize : 14
+                      fontSize : 14,
+                      onPressed: () {
+                        Navigator
+                            .of(context).push(MaterialPageRoute(
+                            builder: (context) => const LoginPage()));
+                      },
                   ),
                 ],
               ),
