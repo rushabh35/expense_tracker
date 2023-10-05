@@ -5,7 +5,8 @@ class CustomButton extends StatelessWidget {
   late Function onPressed;
   late double width;
   late double height;
-  CustomButton({super.key, required this.text, required this.onPressed,  this.width = 500,  this.height = 50});
+  late Color buttonColor;
+  CustomButton({super.key, required this.text, required this.onPressed,  this.width = 500,  this.height = 50, this.buttonColor = AppConstantsColors.grey});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class CustomButton extends StatelessWidget {
         onPressed : () => onPressed(),
         style: ElevatedButton.styleFrom(
 
-          primary: AppConstantsColors.raisedButtonColor, // Button color
+          primary: buttonColor, // Button color
           onPrimary: Colors.black, // Text color
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0), // Adjust the radius as needed

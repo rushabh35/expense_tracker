@@ -10,7 +10,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String? token = prefs.getString('token');
-  runApp( MyApp(token : token));
+  runApp( MyApp(
+      token : token
+  )
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -29,7 +32,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
-      home: (token != null && JwtDecoder.isExpired(token!) == false) ? HomeScreen(token: token) : LoginPage(),
+      home:
+      (token != null && JwtDecoder.isExpired(token!) == false) ? HomeScreen(token: token) : const LoginPage(),
     );
   }
 }
