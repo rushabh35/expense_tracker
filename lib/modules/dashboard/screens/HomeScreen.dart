@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onPressed: () {
           Navigator
               .of(context).push(MaterialPageRoute(
-              builder: (context) => const AddIncomeExpense()));
+              builder: (context) => AddIncomeExpense(token: widget.token)));
         },
         backgroundColor: AppConstantsColors.brightWhiteColor,
 

@@ -38,6 +38,8 @@ dependencies:
   image_picker: ^1.0.4 # Use the latest version from pub.dev
   shared_preferences:
   jwt_decoder:
+  dropdown_search: ^5.0.6
+  get: ^4.6.5
 
 dev_dependencies:
   flutter_test:
